@@ -1,21 +1,18 @@
-# Java/Gradle
-/build/
-/.gradle/
-/api-java/build/
-/api-java/.gradle/
-**/*.log
-
-# Notebooks
-model-dev/results/
-*.ipynb_checkpoints/
-
-# Local assets
+# 大文件 / 私密文件
+api-java/libs/
 model/
 docker/certs/
 *.pfx
 *.crt
 *.key
 
-# OS
+# 构建产物
+/build/
+/.gradle/
+/api-java/build/
+/api-java/.gradle/
+
+# 杂项
+*.log
 .DS_Store
 Thumbs.db
