@@ -1,4 +1,5 @@
-name: Sync Docker Hub README
+name: Sync Docker Hub Overview
+
 on:
   push:
     branches: [main]
@@ -6,16 +7,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  hub-overview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update Docker Hub description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }} # 用的是上面新建的 Access Token
-          repository: pudding2718/ml-predict-api # 必须与 Hub 上完全一致
-          short-description: ML prediction API (Java + ONNX + Nginx/HTTPS)
-          readme-filepath: ./README.md
+      - name: Install hub-tool
+        run: |
+          curl -fsSL https://github.com/docker/hub-tool/releases/download/v0.4.9/hub-tool_Linux_x86_64.tar.gz -o hub-tool.tgz
+          tar -xzf hub-tool.tgz
+          sudo mv hub-tool /usr/local/bin/
+          hub-tool version
+
+      - name: Login & set README with hub-tool
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          hub-tool login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_TOKEN"
+          hub-tool repo readme set pudding2718/ml-predict-api --file README.md
