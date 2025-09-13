@@ -1,0 +1,21 @@
+# Java/Gradle
+/build/
+/.gradle/
+/api-java/build/
+/api-java/.gradle/
+**/*.log
+
+# Notebooks
+model-dev/results/
+*.ipynb_checkpoints/
+
+# Local assets
+model/
+docker/certs/
+*.pfx
+*.crt
+*.key
+
+# OS
+.DS_Store
+Thumbs.db

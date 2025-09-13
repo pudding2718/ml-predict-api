@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.5.4'  
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'  
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'  
+    implementation files('libs/onnxruntime-1.22.0.jar') 
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'  // JUnit Jupiter API
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2' // JUnit Jupiter 引擎
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+application {
+    mainClass = 'my.gradle.project.Application'  
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
