@@ -11,7 +11,6 @@ Client ──HTTPS(443)──> Nginx ──HTTP──> Spring Boot (8080) ──
 - **GitHub Link:** https://github.com/pudding2718/ml-predict-api.git
 
 ---
-
 ## Table of Contents
 
 - [Quick Start](https://chatgpt.com/c/68c4e147-8edc-8331-a5c2-02d81323086c#快速开始)
