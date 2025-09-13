@@ -7,10 +7,11 @@ A behavior prediction API implemented with **Java Spring Boot + ONNX Runtime**, 
 Client ──HTTPS(443)──> Nginx ──HTTP──> Spring Boot (8080) ──> ONNXRuntime ──> model.onnx
 ```
 
-- **Docker Hub**: `pudding2718/ml-predict-api:latest`
+- **Docker Hub**: [`pudding2718/ml-predict-api:latest`](https://hub.docker.com/r/pudding2718/ml-predict-api)
 - **GitHub Link:** https://github.com/pudding2718/ml-predict-api.git
 
 ---
+
 ## Table of Contents
 
 - [Quick Start](https://chatgpt.com/c/68c4e147-8edc-8331-a5c2-02d81323086c#快速开始)
@@ -41,12 +42,12 @@ docker pull pudding2718/ml-predict-api:latest
 docker run -d --name ml-api \
   -p 18080:8080 \
   -v "$(pwd)/model:/root/Bitus-Labs:ro" \
-  <dockerhub-username>/ml-predict-api:latest
+  pudding2718/ml-predict-api:latest
 # Windows PowerShell
 docker run -d --name ml-api `
   -p 18080:8080 `
   -v "$((Get-Location).Path)/model:/root/Bitus-Labs:ro" `
-  <dockerhub-username>/ml-predict-api:latest
+  pudding2718/ml-predict-api:latest
 ```
 
 **3) Test request**

@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Update Docker Hub description
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: pudding2718/ml-predict-api
+          password: ${{ secrets.DOCKERHUB_TOKEN }} # 用的是上面新建的 Access Token
+          repository: pudding2718/ml-predict-api # 必须与 Hub 上完全一致
           short-description: ML prediction API (Java + ONNX + Nginx/HTTPS)
           readme-filepath: ./README.md
